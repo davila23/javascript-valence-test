@@ -21,7 +21,7 @@ How well is your code organized? (Hint: Break your code into meaningful function
 Are your variable and class names descriptive? Do they make sense? (Tip: don't name things with a single character)
 Are you using proper encapsulation?
   
- Is your memory management sound? Are there any memory leaks?
+Is your memory management sound? Are there any memory leaks?
 Are you adhering to the Javascript code style guidelines and naming conventions?
 Are all public methods and classes appropriately documented?
 Did you implement any bonus features? Points for appropriate asynchronous operations (network/disk access), and parallelization as necessary
@@ -30,31 +30,43 @@ Note that we will test your function by running it from the command line and com
 
 
 AWS Lambda Function
+
 We are using Serverless as the framework to enable running of this Lambda function locally without the need to deploy to AWS.
 What to Do
 Your mission, should you choose to accept it, is to develop an AWS Lambda function (using the serverless framework setup described below), to act as an API endpoint that reads a CSV file from S3, queries weather data from an external API for each of the locations, and returns a single JSON document describing the weather across all locations.
 The API you will be querying is the MetaWeather service - it provides an aggregated forecast across many different weather services into a single 5-day forecast for each location. You will parse the CSV passed in to your API endpoint, and for each location name, you need to devise a scalable and reliable strategy to acquire the 5-day forecast data for each location name, and return it in a single, useful JSON document format intended to be consumed by a client application, or data processing service.
+
 Your output should be a simplified version of the weather data, across multiple locations as defined in the CSV file:
       
-  {
-"location_1_name" : [
 {
+"location_1_name" : [
+
+{
+
 "date" : "some_date", "temp" : "some_temp", "weather" : "some_weather"
+
 }, ...
+
 ],
 "location_2_name" : [
+
 ...
+
 ], ...
+
 }
+
+
+
 Example:
 
-  Resources
-Locations CSV MetaWeather API Using Promises
+
 Notes
 You must fetch the CSV file from S3, it can't be locally embedded into your function.
-Not all data within the CSV needs to be used. You should decide which data is relevant, and which isn't. Make sure to read the API documentation extensively - querying the required forecast data for this assignment is not completely straightforward and may require multiple queries to get the data you need. Proper parallelization and usage of asynchronous operations is extremely important in contexts such as this - as you know, network operations are blocking, and an efficient program doesn't spend
-   
- unnecessary time waiting.
+Not all data within the CSV needs to be used. You should decide which data is relevant, and which isn't. 
+Make sure to read the API documentation extensively - querying the required forecast data for this assignment is not completely straightforward and may require multiple queries to get the data you need. Proper parallelization and usage of asynchronous operations is extremely important in contexts such as this - as you know, network operations are blocking, and an efficient program doesn't spendunnecessary time waiting.
+
+
 Setup Installation
 1. Install Serverless
 2. Download Serverless Template
@@ -73,6 +85,7 @@ project's root.
         
   {
 "version": "0.2.0", "configurations": [
+
 {
 "type": "node",
 "request": "launch",
@@ -80,6 +93,8 @@ project's root.
 "program": "${workspaceFolder}/node_modules/serverless/bin/serverless", "args": [
 "invoke", "local", "-f", "myFunction"
 ],
+
+
 // Required, otherwise Serverless thinks stdin is a stream and tries to r from it.
 "console": "integratedTerminal"
 ead options
@@ -88,6 +103,8 @@ ead options
 
 
 Usage Local -->  serverless invoke local -f myFunction -l
+
 Deploy  --> serverless deploy
+
 Usage Remote  --> serverless invoke -f myFunction -l
   
