@@ -1,6 +1,8 @@
 # javascript-valence-test
 Get 5-day forecast from Metaweather API
 
+REF : https://drive.google.com/file/d/1rcfnwS4EebaJWQqbmDz441yZ1Po3AGiR/view
+
 
 AWS Cloud Developer (Javascript) CodingAssessment
   
