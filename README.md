@@ -85,10 +85,9 @@ project's root.
 ead options
 } ]
 }
-Usage Local
- serverless invoke local -f myFunction -l
-Deploy
- serverless deploy
-Usage Remote
-serverless invoke -f myFunction -l
+
+
+Usage Local -->  serverless invoke local -f myFunction -l
+Deploy  --> serverless deploy
+Usage Remote  --> serverless invoke -f myFunction -l
   
