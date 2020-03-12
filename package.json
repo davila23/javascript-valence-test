@@ -1,0 +1,11 @@
+{
+  "name": "valence-aws-javascript-takehome",
+  "version": "1.0.0",
+  "description": "My description here.",
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "^3.7.2",
+    "csv-parser": "^2.3.2"
+  }
+}
